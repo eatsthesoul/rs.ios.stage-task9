@@ -25,6 +25,8 @@
 		2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB9F30D26AF5FA900F43852 /* story-4-path.swift */; };
 		2BB9F31026AF5FB300F43852 /* s4-text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F30F26AF5FB300F43852 /* s4-text.txt */; };
 		2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F31126AF5FBE00F43852 /* s4-title.txt */; };
+		4FEF5B3F26B57DA80045FA2F /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */; };
+		4FEF5B4526B59ECE0045FA2F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B4426B59ECE0045FA2F /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		2BB9F30D26AF5FA900F43852 /* story-4-path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "story-4-path.swift"; sourceTree = "<group>"; };
 		2BB9F30F26AF5FB300F43852 /* s4-text.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-text.txt"; sourceTree = "<group>"; };
 		2BB9F31126AF5FBE00F43852 /* s4-title.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-title.txt"; sourceTree = "<group>"; };
+		4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		4FEF5B4426B59ECE0045FA2F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,9 @@
 			children = (
 				2BB9F28F26ADFAEB00F43852 /* Data */,
 				4FEF5B3D26B574F70045FA2F /* System Files */,
+				2BB9E75D26AB605700112651 /* SceneDelegate.swift */,
+				4FEF5B4026B57DC50045FA2F /* ViewControllers */,
+				4FEF5B4326B59EAA0045FA2F /* Utils */,
 			);
 			path = RSSchool_T9;
 			sourceTree = "<group>";
@@ -150,13 +157,28 @@
 			isa = PBXGroup;
 			children = (
 				2BB9E75B26AB605700112651 /* AppDelegate.swift */,
-				2BB9E75D26AB605700112651 /* SceneDelegate.swift */,
 				2BB9E76126AB605700112651 /* Main.storyboard */,
 				2BB9E76426AB605900112651 /* Assets.xcassets */,
 				2BB9E76626AB605900112651 /* LaunchScreen.storyboard */,
 				2BB9E76926AB605900112651 /* Info.plist */,
 			);
 			path = "System Files";
+			sourceTree = "<group>";
+		};
+		4FEF5B4026B57DC50045FA2F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4FEF5B4326B59EAA0045FA2F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4FEF5B4426B59ECE0045FA2F /* Helpers.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +266,9 @@
 				2BB9E75C26AB605700112651 /* AppDelegate.swift in Sources */,
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
+				4FEF5B4526B59ECE0045FA2F /* Helpers.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
+				4FEF5B3F26B57DA80045FA2F /* ItemsViewController.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
 			);
