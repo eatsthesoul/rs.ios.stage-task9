@@ -81,12 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				2BB9F28F26ADFAEB00F43852 /* Data */,
-				2BB9E75B26AB605700112651 /* AppDelegate.swift */,
-				2BB9E75D26AB605700112651 /* SceneDelegate.swift */,
-				2BB9E76126AB605700112651 /* Main.storyboard */,
-				2BB9E76426AB605900112651 /* Assets.xcassets */,
-				2BB9E76626AB605900112651 /* LaunchScreen.storyboard */,
-				2BB9E76926AB605900112651 /* Info.plist */,
+				4FEF5B3D26B574F70045FA2F /* System Files */,
 			);
 			path = RSSchool_T9;
 			sourceTree = "<group>";
@@ -149,6 +144,19 @@
 				2BB9F31126AF5FBE00F43852 /* s4-title.txt */,
 			);
 			path = "story-4";
+			sourceTree = "<group>";
+		};
+		4FEF5B3D26B574F70045FA2F /* System Files */ = {
+			isa = PBXGroup;
+			children = (
+				2BB9E75B26AB605700112651 /* AppDelegate.swift */,
+				2BB9E75D26AB605700112651 /* SceneDelegate.swift */,
+				2BB9E76126AB605700112651 /* Main.storyboard */,
+				2BB9E76426AB605900112651 /* Assets.xcassets */,
+				2BB9E76626AB605900112651 /* LaunchScreen.storyboard */,
+				2BB9E76926AB605900112651 /* Info.plist */,
+			);
+			path = "System Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,13 +395,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RSSchool_T9/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RSSchool_T9/System Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.username.RSSchool-T9";
+				PRODUCT_BUNDLE_IDENTIFIER = "eatsthesoul.RSSchool-T9";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -408,13 +416,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RSSchool_T9/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RSSchool_T9/System Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.username.RSSchool-T9";
+				PRODUCT_BUNDLE_IDENTIFIER = "eatsthesoul.RSSchool-T9";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
