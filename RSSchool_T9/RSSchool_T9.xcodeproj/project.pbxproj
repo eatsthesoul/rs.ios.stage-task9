@@ -28,6 +28,7 @@
 		4FEF5B3F26B57DA80045FA2F /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */; };
 		4FEF5B4526B59ECE0045FA2F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B4426B59ECE0045FA2F /* Helpers.swift */; };
 		4FEF5B4926B5A8350045FA2F /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B4826B5A8350045FA2F /* ItemCollectionViewCell.swift */; };
+		4FEF5B5126B6925B0045FA2F /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B5026B6925B0045FA2F /* CloseButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		4FEF5B4426B59ECE0045FA2F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		4FEF5B4826B5A8350045FA2F /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		4FEF5B5026B6925B0045FA2F /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEF5B4826B5A8350045FA2F /* ItemCollectionViewCell.swift */,
+				4FEF5B5026B6925B0045FA2F /* CloseButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
 				4FEF5B4526B59ECE0045FA2F /* Helpers.swift in Sources */,
+				4FEF5B5126B6925B0045FA2F /* CloseButton.swift in Sources */,
 				4FEF5B4926B5A8350045FA2F /* ItemCollectionViewCell.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
 				4FEF5B3F26B57DA80045FA2F /* ItemsViewController.swift in Sources */,
