@@ -92,7 +92,9 @@ extension ItemsViewController: UICollectionViewDelegate {
             storyVC.modalPresentationStyle = .fullScreen
             present(storyVC, animated: true, completion: nil)
         case .gallery(let gallery):
-            print("Gallery")
+            let galleryVC = GalleryVC(with: gallery)
+            galleryVC.modalPresentationStyle = .fullScreen
+            present(galleryVC, animated: true, completion: nil)
         }
     }
 }
