@@ -15,7 +15,7 @@ class CloseButton: UIButton {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "xmark")
-        imageView.tintColor = .black
+        imageView.tintColor = .white
         imageView.isUserInteractionEnabled = false
         return imageView
     }()
@@ -26,13 +26,13 @@ class CloseButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         
         layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = UIColor.white.cgColor
         layer.cornerRadius = 20
         
         self.addSubview(xImageView)
         
         NSLayoutConstraint.activate([
-            
+    
             self.heightAnchor.constraint(equalToConstant: 40),
             self.widthAnchor.constraint(equalToConstant: 40),
             
@@ -49,12 +49,10 @@ class CloseButton: UIButton {
     
     override var isHighlighted: Bool {
         didSet {
-            UIView.transition(with: self, duration: 0.1, options: [.transitionCrossDissolve]) { [self] in
-                if isHighlighted {
-                    xImageView.tintColor = UIColor(red: 0.475, green: 0.475, blue: 0.475, alpha: 1)
-                } else {
-                    xImageView.tintColor = .black
-                }
+            if isHighlighted {
+                xImageView.tintColor = UIColor(red: 0.475, green: 0.475, blue: 0.475, alpha: 1)
+            } else {
+                xImageView.tintColor = .white
             }
         }
     }

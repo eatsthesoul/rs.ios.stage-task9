@@ -85,6 +85,16 @@ extension ItemsViewController: UICollectionViewDelegateFlowLayout {
 
 extension ItemsViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch data[indexPath.row] {
+        case .story(let story):
+            let storyVC = StoryVC(with: story)
+            storyVC.modalPresentationStyle = .fullScreen
+            present(storyVC, animated: true, completion: nil)
+        case .gallery(let gallery):
+            print("Gallery")
+        }
+    }
 }
 
 
