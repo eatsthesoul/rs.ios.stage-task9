@@ -37,6 +37,7 @@
 		4FEF5B5F26B7C9100045FA2F /* GalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B5E26B7C9100045FA2F /* GalleryVC.swift */; };
 		4FEF5B6126B7DB130045FA2F /* GalleryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B6026B7DB130045FA2F /* GalleryHeaderView.swift */; };
 		4FEF5B6326B806930045FA2F /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B6226B806930045FA2F /* GalleryCollectionViewCell.swift */; };
+		4FEF5B6526B82CA70045FA2F /* ImageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B6426B82CA70045FA2F /* ImageDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		4FEF5B5E26B7C9100045FA2F /* GalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryVC.swift; sourceTree = "<group>"; };
 		4FEF5B6026B7DB130045FA2F /* GalleryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryHeaderView.swift; sourceTree = "<group>"; };
 		4FEF5B6226B806930045FA2F /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		4FEF5B6426B82CA70045FA2F /* ImageDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */,
+				4FEF5B6426B82CA70045FA2F /* ImageDetailVC.swift */,
 				4FEF5B5226B6C1380045FA2F /* StoryVC.swift */,
 				4FEF5B5E26B7C9100045FA2F /* GalleryVC.swift */,
 			);
@@ -317,6 +320,7 @@
 				4FEF5B3F26B57DA80045FA2F /* ItemsViewController.swift in Sources */,
 				4FEF5B6326B806930045FA2F /* GalleryCollectionViewCell.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
+				4FEF5B6526B82CA70045FA2F /* ImageDetailVC.swift in Sources */,
 				4FEF5B5526B6C45A0045FA2F /* TitleView.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
 			);

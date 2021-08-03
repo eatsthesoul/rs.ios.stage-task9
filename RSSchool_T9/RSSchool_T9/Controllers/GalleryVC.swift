@@ -15,8 +15,7 @@ class GalleryVC: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 20 //???
-        layout.minimumInteritemSpacing = 20 //???
+        layout.minimumLineSpacing = 20
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 30, right: 20)
         layout.scrollDirection = .vertical
         
@@ -123,5 +122,19 @@ extension GalleryVC: UICollectionViewDelegateFlowLayout {
         return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
                                                   withHorizontalFittingPriority: .required,
                                                   verticalFittingPriority: .fittingSizeLevel)
+    }
+}
+
+extension GalleryVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let imageDetailVC = ImageDetailVC()
+        
+        let image = data!.images[indexPath.row]
+        imageDetailVC.setupImage(image)
+        
+        imageDetailVC.modalPresentationStyle = .fullScreen
+        self.present(imageDetailVC, animated: true, completion: nil)
     }
 }
