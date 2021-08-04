@@ -15,7 +15,7 @@ class VectorImageCell: UICollectionViewCell {
     
     private lazy var shape: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.strokeColor = UIColor.white.cgColor
+        layer.strokeColor = UIColor(fromHexString: SettingsMaster.sharedInstance().strokeHex).cgColor
         layer.fillColor = nil
         layer.lineWidth = 1.0
         return layer
@@ -48,22 +48,22 @@ class VectorImageCell: UICollectionViewCell {
     }
     
     func drawVector() {
-        timer?.invalidate()
         
-        self.shape.strokeStart = 0
-        self.shape.strokeEnd = 0
-        
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true) { [self] timer in
-            
-            shape.strokeEnd += (0.01667 / 3)
-            if (shape.strokeEnd >= 1) {
-                timer.invalidate()
+        if (SettingsMaster.sharedInstance().isStoriesDrawn) {
+            timer?.invalidate()
+            self.shape.strokeStart = 0
+            self.shape.strokeEnd = 0
+            self.timer = Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true) { [self] timer in
+                shape.strokeEnd += (0.01667 / 3)
+                if (shape.strokeEnd >= 1) {
+                    timer.invalidate()
+                }
             }
+        } else {
+            timer?.invalidate()
+            self.shape.strokeEnd = 1
         }
-        RunLoop.current.add(timer!, forMode: .common)
     }
-
-       
 }
 
 

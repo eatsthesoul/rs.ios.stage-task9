@@ -10,6 +10,7 @@
 #import "StrokeColorSettingsVC.h"
 #import "StrokeColors.h"
 #import "UIColor+HexColor.h"
+#import "SettingsMaster.h"
 
 @interface StrokeColorSettingsVC ()
 
@@ -58,6 +59,7 @@
     UITableViewCell *newSelectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     newSelectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
     self.selectedCellIndexPath = indexPath;
+    SettingsMaster.sharedInstance.strokeHex = newSelectedCell.textLabel.text;
 }
 
 //MARK: - UITableViewDataSource
@@ -69,8 +71,15 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ColorCell"];
-    cell.textLabel.text = self.data[indexPath.row];
-    cell.textLabel.textColor = [UIColor colorFromHexString:self.data[indexPath.row]];
+    NSString *hex = self.data[indexPath.row];
+    cell.textLabel.text = hex;
+    cell.textLabel.textColor = [UIColor colorFromHexString:hex];
+    
+    //setup check mark
+    if ([SettingsMaster.sharedInstance.strokeHex isEqualToString:hex]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.selectedCellIndexPath = indexPath;
+    }
     
     return cell;
 }

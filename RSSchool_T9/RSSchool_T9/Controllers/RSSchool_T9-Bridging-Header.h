@@ -3,3 +3,5 @@
 //
 
 #import "SettingsVC.h"
+#import "SettingsMaster.h"
+#import "UIColor+HexColor.h"

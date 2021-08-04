@@ -126,6 +126,11 @@ class StoryVC: UIViewController {
         ])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        vectorImagesCollection.reloadData()
+    }
+    
     @objc func closeButtonHandler() {
         self.dismiss(animated: true, completion: nil)
     }

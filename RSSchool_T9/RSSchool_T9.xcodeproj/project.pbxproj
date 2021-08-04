@@ -29,8 +29,8 @@
 		4F09D3FE26BA832E009BED14 /* StrokeColorSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F09D3FD26BA832E009BED14 /* StrokeColorSettingsVC.m */; };
 		4F09D40726BAA1C1009BED14 /* StrokeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F09D40626BAA1C1009BED14 /* StrokeColors.m */; };
 		4F09D40D26BAA681009BED14 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F09D40B26BAA681009BED14 /* UIColor+HexColor.m */; };
+		4F09D41526BAC81B009BED14 /* SettingsMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F09D41426BAC81B009BED14 /* SettingsMaster.m */; };
 		4FEF5B3F26B57DA80045FA2F /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */; };
-		4FEF5B4526B59ECE0045FA2F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B4426B59ECE0045FA2F /* Helpers.swift */; };
 		4FEF5B4926B5A8350045FA2F /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B4826B5A8350045FA2F /* ItemCollectionViewCell.swift */; };
 		4FEF5B5126B6925B0045FA2F /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B5026B6925B0045FA2F /* CloseButton.swift */; };
 		4FEF5B5326B6C1380045FA2F /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B5226B6C1380045FA2F /* StoryVC.swift */; };
@@ -74,8 +74,9 @@
 		4F09D40626BAA1C1009BED14 /* StrokeColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StrokeColors.m; sourceTree = "<group>"; };
 		4F09D40B26BAA681009BED14 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		4F09D40C26BAA681009BED14 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		4F09D41326BAC81B009BED14 /* SettingsMaster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsMaster.h; sourceTree = "<group>"; };
+		4F09D41426BAC81B009BED14 /* SettingsMaster.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsMaster.m; sourceTree = "<group>"; };
 		4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
-		4FEF5B4426B59ECE0045FA2F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		4FEF5B4826B5A8350045FA2F /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		4FEF5B5026B6925B0045FA2F /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		4FEF5B5226B6C1380045FA2F /* StoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 		2BB9E75A26AB605700112651 /* RSSchool_T9 */ = {
 			isa = PBXGroup;
 			children = (
+				4F09D41226BAC7FA009BED14 /* SettingsMaster */,
 				2BB9F28F26ADFAEB00F43852 /* Data */,
 				4FEF5B3D26B574F70045FA2F /* System Files */,
 				2BB9E75D26AB605700112651 /* SceneDelegate.swift */,
@@ -226,6 +228,15 @@
 			path = "UIColor+HexColor";
 			sourceTree = "<group>";
 		};
+		4F09D41226BAC7FA009BED14 /* SettingsMaster */ = {
+			isa = PBXGroup;
+			children = (
+				4F09D41326BAC81B009BED14 /* SettingsMaster.h */,
+				4F09D41426BAC81B009BED14 /* SettingsMaster.m */,
+			);
+			path = SettingsMaster;
+			sourceTree = "<group>";
+		};
 		4FEF5B3D26B574F70045FA2F /* System Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				4F09D40A26BAA681009BED14 /* UIColor+HexColor */,
-				4FEF5B4426B59ECE0045FA2F /* Helpers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -366,7 +376,6 @@
 				4F09D40726BAA1C1009BED14 /* StrokeColors.m in Sources */,
 				4FEF5B5D26B71E520045FA2F /* TextLabel.swift in Sources */,
 				4FEF5B5F26B7C9100045FA2F /* GalleryVC.swift in Sources */,
-				4FEF5B4526B59ECE0045FA2F /* Helpers.swift in Sources */,
 				4F09D3FE26BA832E009BED14 /* StrokeColorSettingsVC.m in Sources */,
 				4FEF5B5126B6925B0045FA2F /* CloseButton.swift in Sources */,
 				4FEF5B5B26B70B0B0045FA2F /* VectorImageCell.swift in Sources */,
@@ -378,6 +387,7 @@
 				4FEF5B6326B806930045FA2F /* GalleryCollectionViewCell.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
 				4F09D3FB26B9BE7F009BED14 /* SettingsVC.m in Sources */,
+				4F09D41526BAC81B009BED14 /* SettingsMaster.m in Sources */,
 				4FEF5B6526B82CA70045FA2F /* ImageDetailVC.swift in Sources */,
 				4FEF5B5526B6C45A0045FA2F /* TitleView.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,

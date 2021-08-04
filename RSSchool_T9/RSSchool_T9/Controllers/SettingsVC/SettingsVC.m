@@ -9,6 +9,8 @@
 
 #import "SettingsVC.h"
 #import "StrokeColorSettingsVC.h"
+#import "SettingsMaster.h"
+#import "UIColor+HexColor.h"
 
 @interface SettingsVC ()
 
@@ -30,6 +32,12 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
 - (void)setupUIElements {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleInsetGrouped];
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -49,6 +57,10 @@
     ]];
 }
 
+- (void)drawSwitchHandler {
+    SettingsMaster.sharedInstance.isStoriesDrawn = !SettingsMaster.sharedInstance.isStoriesDrawn;
+}
+
 //MARK: - UITableViewDataSource
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -63,7 +75,8 @@
         cell.textLabel.text = @"Draw stories";
         
         UISwitch *drawSwitch = [[UISwitch alloc] init];
-        drawSwitch.on = YES;
+        drawSwitch.on = SettingsMaster.sharedInstance.isStoriesDrawn;
+        [drawSwitch addTarget:self action:@selector(drawSwitchHandler) forControlEvents:UIControlEventValueChanged];
         
         cell.accessoryView = drawSwitch;
         
@@ -75,8 +88,9 @@
         cell.textLabel.text = @"Stroke color";
         cell.textLabel.font = [UIFont fontWithName:@"SFProDisplay-Regular" size:12];
         
-        cell.detailTextLabel.text = @"#e87aa4";
-        cell.detailTextLabel.textColor = UIColor.redColor;
+        NSString *hex = SettingsMaster.sharedInstance.strokeHex;
+        cell.detailTextLabel.text = hex;
+        cell.detailTextLabel.textColor = [UIColor colorFromHexString:hex];
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
