@@ -25,6 +25,10 @@
 		2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB9F30D26AF5FA900F43852 /* story-4-path.swift */; };
 		2BB9F31026AF5FB300F43852 /* s4-text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F30F26AF5FB300F43852 /* s4-text.txt */; };
 		2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F31126AF5FBE00F43852 /* s4-title.txt */; };
+		4F09D3FB26B9BE7F009BED14 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F09D3FA26B9BE7F009BED14 /* SettingsVC.m */; };
+		4F09D3FE26BA832E009BED14 /* StrokeColorSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F09D3FD26BA832E009BED14 /* StrokeColorSettingsVC.m */; };
+		4F09D40726BAA1C1009BED14 /* StrokeColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F09D40626BAA1C1009BED14 /* StrokeColors.m */; };
+		4F09D40D26BAA681009BED14 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F09D40B26BAA681009BED14 /* UIColor+HexColor.m */; };
 		4FEF5B3F26B57DA80045FA2F /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */; };
 		4FEF5B4526B59ECE0045FA2F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B4426B59ECE0045FA2F /* Helpers.swift */; };
 		4FEF5B4926B5A8350045FA2F /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF5B4826B5A8350045FA2F /* ItemCollectionViewCell.swift */; };
@@ -61,6 +65,15 @@
 		2BB9F30D26AF5FA900F43852 /* story-4-path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "story-4-path.swift"; sourceTree = "<group>"; };
 		2BB9F30F26AF5FB300F43852 /* s4-text.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-text.txt"; sourceTree = "<group>"; };
 		2BB9F31126AF5FBE00F43852 /* s4-title.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-title.txt"; sourceTree = "<group>"; };
+		4F09D3F426B9BD02009BED14 /* RSSchool_T9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSchool_T9-Bridging-Header.h"; sourceTree = "<group>"; };
+		4F09D3F926B9BE7F009BED14 /* SettingsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
+		4F09D3FA26B9BE7F009BED14 /* SettingsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
+		4F09D3FC26BA832E009BED14 /* StrokeColorSettingsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StrokeColorSettingsVC.h; sourceTree = "<group>"; };
+		4F09D3FD26BA832E009BED14 /* StrokeColorSettingsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StrokeColorSettingsVC.m; sourceTree = "<group>"; };
+		4F09D40526BAA1C1009BED14 /* StrokeColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StrokeColors.h; sourceTree = "<group>"; };
+		4F09D40626BAA1C1009BED14 /* StrokeColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StrokeColors.m; sourceTree = "<group>"; };
+		4F09D40B26BAA681009BED14 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
+		4F09D40C26BAA681009BED14 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		4FEF5B3E26B57DA80045FA2F /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		4FEF5B4426B59ECE0045FA2F /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		4FEF5B4826B5A8350045FA2F /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +134,7 @@
 			children = (
 				2BB9F29226AE017D00F43852 /* Static */,
 				2BB9F29026ADFAF100F43852 /* Data.swift */,
+				4F09D40926BAA1D1009BED14 /* StrokeColors */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -176,6 +190,42 @@
 			path = "story-4";
 			sourceTree = "<group>";
 		};
+		4F09D3F826B9BE45009BED14 /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				4F09D3F926B9BE7F009BED14 /* SettingsVC.h */,
+				4F09D3FA26B9BE7F009BED14 /* SettingsVC.m */,
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		4F09D40026BA8346009BED14 /* StrokeColorSettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				4F09D3FC26BA832E009BED14 /* StrokeColorSettingsVC.h */,
+				4F09D3FD26BA832E009BED14 /* StrokeColorSettingsVC.m */,
+			);
+			path = StrokeColorSettingsVC;
+			sourceTree = "<group>";
+		};
+		4F09D40926BAA1D1009BED14 /* StrokeColors */ = {
+			isa = PBXGroup;
+			children = (
+				4F09D40526BAA1C1009BED14 /* StrokeColors.h */,
+				4F09D40626BAA1C1009BED14 /* StrokeColors.m */,
+			);
+			path = StrokeColors;
+			sourceTree = "<group>";
+		};
+		4F09D40A26BAA681009BED14 /* UIColor+HexColor */ = {
+			isa = PBXGroup;
+			children = (
+				4F09D40B26BAA681009BED14 /* UIColor+HexColor.m */,
+				4F09D40C26BAA681009BED14 /* UIColor+HexColor.h */,
+			);
+			path = "UIColor+HexColor";
+			sourceTree = "<group>";
+		};
 		4FEF5B3D26B574F70045FA2F /* System Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +245,9 @@
 				4FEF5B6426B82CA70045FA2F /* ImageDetailVC.swift */,
 				4FEF5B5226B6C1380045FA2F /* StoryVC.swift */,
 				4FEF5B5E26B7C9100045FA2F /* GalleryVC.swift */,
+				4F09D3F826B9BE45009BED14 /* SettingsVC */,
+				4F09D40026BA8346009BED14 /* StrokeColorSettingsVC */,
+				4F09D3F426B9BD02009BED14 /* RSSchool_T9-Bridging-Header.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +255,7 @@
 		4FEF5B4326B59EAA0045FA2F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4F09D40A26BAA681009BED14 /* UIColor+HexColor */,
 				4FEF5B4426B59ECE0045FA2F /* Helpers.swift */,
 			);
 			path = Utils;
@@ -309,17 +363,21 @@
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				4FEF5B5726B6E2EA0045FA2F /* ItemTypeLabel.swift in Sources */,
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
+				4F09D40726BAA1C1009BED14 /* StrokeColors.m in Sources */,
 				4FEF5B5D26B71E520045FA2F /* TextLabel.swift in Sources */,
 				4FEF5B5F26B7C9100045FA2F /* GalleryVC.swift in Sources */,
 				4FEF5B4526B59ECE0045FA2F /* Helpers.swift in Sources */,
+				4F09D3FE26BA832E009BED14 /* StrokeColorSettingsVC.m in Sources */,
 				4FEF5B5126B6925B0045FA2F /* CloseButton.swift in Sources */,
 				4FEF5B5B26B70B0B0045FA2F /* VectorImageCell.swift in Sources */,
 				4FEF5B5326B6C1380045FA2F /* StoryVC.swift in Sources */,
 				4FEF5B4926B5A8350045FA2F /* ItemCollectionViewCell.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
 				4FEF5B3F26B57DA80045FA2F /* ItemsViewController.swift in Sources */,
+				4F09D40D26BAA681009BED14 /* UIColor+HexColor.m in Sources */,
 				4FEF5B6326B806930045FA2F /* GalleryCollectionViewCell.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
+				4F09D3FB26B9BE7F009BED14 /* SettingsVC.m in Sources */,
 				4FEF5B6526B82CA70045FA2F /* ImageDetailVC.swift in Sources */,
 				4FEF5B5526B6C45A0045FA2F /* TitleView.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
@@ -479,6 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "eatsthesoul.RSSchool-T9";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T9/Controllers/RSSchool_T9-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -500,6 +559,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "eatsthesoul.RSSchool-T9";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T9/Controllers/RSSchool_T9-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

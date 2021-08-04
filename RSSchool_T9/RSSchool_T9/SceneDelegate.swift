@@ -20,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = createTabBarController()
         window.rootViewController = tabBarController
         
+        UIView.appearance().tintColor = .red
+        
         self.window = window
         window.makeKeyAndVisible()
     }
@@ -28,9 +30,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 func createTabBarController() -> UITabBarController {
     let tabBarController = UITabBarController()
     
+    //0
     let itemsVC = ItemsViewController()
     itemsVC.tabBarItem = UITabBarItem(title: "Items", image: UIImage(systemName:"square.grid.2x2"), tag: 0)
-    tabBarController.viewControllers = [itemsVC]
+    
+    //1
+    let settingsVC = SettingsVC()
+    let settingsNavigationController = UINavigationController(rootViewController: settingsVC)
+    settingsNavigationController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 1)
+    
+    tabBarController.viewControllers = [itemsVC, settingsNavigationController]
     
     tabBarController.tabBar.tintColor = .red
     
