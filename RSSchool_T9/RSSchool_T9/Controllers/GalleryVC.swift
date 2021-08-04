@@ -108,10 +108,15 @@ extension GalleryVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = collectionView.bounds.width - 40
-        let height = width * 1.337
-        
-        return CGSize(width: width, height: height)
+        if UIDevice.current.orientation.isLandscape {
+            let width = collectionView.bounds.width / 3 - 40
+            let height = width * 1.337
+            return CGSize(width: width, height: height)
+        } else {
+            let width = collectionView.bounds.width - 40
+            let height = width * 1.337
+            return CGSize(width: width, height: height)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
