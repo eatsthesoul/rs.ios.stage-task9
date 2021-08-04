@@ -11,7 +11,7 @@ import UIKit
 
 class ItemsViewController: UIViewController {
     
-    let numberOfCellsInLine = 2
+    let numberOfCellsInLine: CGFloat = 2
     let data = FillingData.data
     
     private lazy var collectionView: UICollectionView = {
@@ -43,6 +43,10 @@ class ItemsViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
 
@@ -76,7 +80,7 @@ extension ItemsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = collectionView.bounds.width / 2 - 8 - 20
+        let width = collectionView.bounds.width / numberOfCellsInLine - 4 * numberOfCellsInLine - 20
         let height = width * 1.229
         
         return CGSize(width: width, height: height)
