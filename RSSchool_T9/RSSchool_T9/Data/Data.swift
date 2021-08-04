@@ -37,6 +37,8 @@ enum ContentType {
 
 struct FillingData {
     static let data: [ContentType] = [
+        .story(Story(coverImage: .init("story-6"), title: .from("s6-title"), text: .from("s6-text"), paths: [.story6path1, .story6path2, .story6path3])),
+        .story(Story(coverImage: .init("story-5"), title: .from("s5-title"), text: .from("s5-text"), paths: [.story5path1, .story5path2, .story5path3])),
         .story(Story(coverImage: .init("story-1"), title: .from("s1-title"), text: .from("s1-text"), paths: [.story1path1, .story1path2, .story1path3])),
         .story(Story(coverImage: .init("story-2"), title: .from("s2-title"), text: .from("s2-text"), paths: [.story2path1, .story2path2])),
         .gallery(Gallery(coverImage: .init("minsk-0"), title: "Minsk", images: .init(base: "minsk", count: 6))),
