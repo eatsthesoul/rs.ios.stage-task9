@@ -59,6 +59,7 @@ class VectorImageCell: UICollectionViewCell {
                     timer.invalidate()
                 }
             }
+            RunLoop.current.add(timer!, forMode: .common)
         } else {
             timer?.invalidate()
             self.shape.strokeEnd = 1
