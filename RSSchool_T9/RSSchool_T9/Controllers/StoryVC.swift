@@ -25,8 +25,8 @@ class StoryVC: UIViewController {
         return button
     }()
     
-    lazy var titleView: TitleView = {
-        let view = TitleView(title: data?.title, image: data?.coverImage)
+    lazy var titleView: CoverView = {
+        let view = CoverView(title: data?.title, image: data?.coverImage)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

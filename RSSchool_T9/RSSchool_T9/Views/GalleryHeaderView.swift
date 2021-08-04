@@ -16,8 +16,8 @@ class GalleryHeaderView: UICollectionReusableView {
         return button
     }()
     
-    lazy var titleView: TitleView = {
-        let view = TitleView(title: "", image: nil)
+    lazy var titleView: CoverView = {
+        let view = CoverView(title: "", image: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

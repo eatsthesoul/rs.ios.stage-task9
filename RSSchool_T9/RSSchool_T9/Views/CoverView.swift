@@ -9,7 +9,7 @@
 
 import UIKit
 
-class TitleView: UIImageView {
+class CoverView: UIImageView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
