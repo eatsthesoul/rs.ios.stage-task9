@@ -46,7 +46,7 @@ class VectorImageCell: UICollectionViewCell {
         shape.path = path
     }
     
-    func drawVector() {
+    func drawCell() {
         
         drawView.layer.addSublayer(shape)
         
@@ -67,7 +67,7 @@ class VectorImageCell: UICollectionViewCell {
         }
     }
     
-    func removeShapeLayer() {
+    func clearCell() {
         timer?.invalidate()
         self.shape.strokeStart = 0
         self.shape.strokeEnd = 0

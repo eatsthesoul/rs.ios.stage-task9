@@ -12,10 +12,13 @@ import UIKit
 class StoryVC: UIViewController {
     
     var data: Story?
+    
+    var needRedrawCollectionView = false
 
     lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.delegate =  self
         return scroll
     }()
     
@@ -153,13 +156,13 @@ extension StoryVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let vectorCell = cell as? VectorImageCell {
             vectorCell.prepare(data!.paths[indexPath.row])
-            vectorCell.drawVector()
+            vectorCell.drawCell()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let vectorCell = cell as? VectorImageCell {
-            vectorCell.removeShapeLayer()
+            vectorCell.clearCell()
         }
     }
 }
@@ -169,5 +172,38 @@ extension StoryVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: 100, height: 100)
+    }
+}
+
+extension StoryVC: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        //visible are above the collection view - need to clear cells
+        if scrollView.contentOffset.y + view.bounds.height < vectorImagesCollection.frame.origin.y && !needRedrawCollectionView {
+            needRedrawCollectionView = true
+            vectorImagesCollection.visibleCells.forEach { cell in
+                if let vectorCell = cell as? VectorImageCell { vectorCell.clearCell() }
+            }
+        }
+        
+        //visible are above the collection view - need to clear cells
+        if  scrollView.contentOffset.y > vectorImagesCollection.frame.origin.y + vectorImagesCollection.bounds.height
+                && !needRedrawCollectionView {
+            needRedrawCollectionView = true
+            vectorImagesCollection.visibleCells.forEach { cell in
+                if let vectorCell = cell as? VectorImageCell { vectorCell.clearCell() }
+            }
+        }
+
+        //collection view is visible - need to redraw cells
+        if scrollView.contentOffset.y <= vectorImagesCollection.frame.origin.y + vectorImagesCollection.bounds.height
+            && scrollView.contentOffset.y + view.bounds.height >= vectorImagesCollection.frame.origin.y
+            && needRedrawCollectionView {
+            needRedrawCollectionView = false
+            vectorImagesCollection.visibleCells.forEach { cell in
+                if let vectorCell = cell as? VectorImageCell { vectorCell.drawCell() }
+            }
+        }
     }
 }
