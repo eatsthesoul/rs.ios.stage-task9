@@ -143,14 +143,25 @@ extension StoryVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VectorCell", for: indexPath) as! VectorImageCell
-        cell.prepare(data!.paths[indexPath.row])
-        cell.drawVector()
-
         return cell
     }
     
+}
+extension StoryVC: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let vectorCell = cell as? VectorImageCell {
+            vectorCell.prepare(data!.paths[indexPath.row])
+            vectorCell.drawVector()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let vectorCell = cell as? VectorImageCell {
+            vectorCell.removeShapeLayer()
+        }
+    }
 }
 
 extension StoryVC: UICollectionViewDelegateFlowLayout {

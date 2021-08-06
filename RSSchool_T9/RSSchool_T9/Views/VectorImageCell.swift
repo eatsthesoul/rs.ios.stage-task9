@@ -31,7 +31,6 @@ class VectorImageCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.addSubview(drawView)
-        drawView.layer.addSublayer(shape)
         
         NSLayoutConstraint.activate([
             drawView.leadingAnchor.constraint(equalTo:leadingAnchor, constant: 13),
@@ -49,6 +48,8 @@ class VectorImageCell: UICollectionViewCell {
     
     func drawVector() {
         
+        drawView.layer.addSublayer(shape)
+        
         if (SettingsMaster.sharedInstance().isStoriesDrawn) {
             timer?.invalidate()
             self.shape.strokeStart = 0
@@ -64,6 +65,13 @@ class VectorImageCell: UICollectionViewCell {
             timer?.invalidate()
             self.shape.strokeEnd = 1
         }
+    }
+    
+    func removeShapeLayer() {
+        timer?.invalidate()
+        self.shape.strokeStart = 0
+        self.shape.strokeEnd = 0
+        shape.removeFromSuperlayer()
     }
 }
 
