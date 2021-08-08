@@ -11,8 +11,6 @@ import UIKit
 
 class VectorImageCell: UICollectionViewCell {
     
-    var timer: Timer?
-    
     private lazy var shape: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.strokeColor = UIColor(fromHexString: SettingsMaster.sharedInstance().strokeHex).cgColor
@@ -50,28 +48,17 @@ class VectorImageCell: UICollectionViewCell {
         
         drawView.layer.addSublayer(shape)
         
+        //animated drawing
         if (SettingsMaster.sharedInstance().isStoriesDrawn) {
-            timer?.invalidate()
-            self.shape.strokeStart = 0
-            self.shape.strokeEnd = 0
-            self.timer = Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true) { [self] timer in
-                shape.strokeEnd += (0.01667 / 3)
-                if (shape.strokeEnd >= 1) {
-                    timer.invalidate()
-                }
-            }
-            RunLoop.current.add(timer!, forMode: .common)
+                let animation = CABasicAnimation(keyPath: "strokeEnd")
+                animation.duration = 3
+                animation.fromValue = 0
+                animation.toValue = 1
+                shape.add(animation, forKey: "animatePath")
+        //static
         } else {
-            timer?.invalidate()
             self.shape.strokeEnd = 1
         }
-    }
-    
-    func clearCell() {
-        timer?.invalidate()
-        self.shape.strokeStart = 0
-        self.shape.strokeEnd = 0
-        shape.removeFromSuperlayer()
     }
 }
 

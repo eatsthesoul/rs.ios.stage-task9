@@ -13,7 +13,7 @@ class StoryVC: UIViewController {
     
     var data: Story?
     
-    var needRedrawCollectionView = false
+    var needToRedrawCollectionView = false
 
     lazy var scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -47,7 +47,7 @@ class StoryVC: UIViewController {
         return view
     }()
     
-    lazy var vectorImagesCollection: UICollectionView = {
+    lazy var vectorImagesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 100
         layout.sectionInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 20)
@@ -88,7 +88,7 @@ class StoryVC: UIViewController {
         scrollView.addSubview(titleView)
         scrollView.addSubview(typeLabel)
         scrollView.addSubview(lineView)
-        scrollView.addSubview(vectorImagesCollection)
+        scrollView.addSubview(vectorImagesCollectionView)
         scrollView.addSubview(textLabel)
         
         
@@ -117,13 +117,13 @@ class StoryVC: UIViewController {
             lineView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -100),
             lineView.heightAnchor.constraint(equalToConstant: 1),
             
-            vectorImagesCollection.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            vectorImagesCollection.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40),
-            vectorImagesCollection.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            vectorImagesCollection.heightAnchor.constraint(equalToConstant: 100),
+            vectorImagesCollectionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            vectorImagesCollectionView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40),
+            vectorImagesCollectionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            vectorImagesCollectionView.heightAnchor.constraint(equalToConstant: 100),
             
             textLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-            textLabel.topAnchor.constraint(equalTo: vectorImagesCollection.bottomAnchor, constant: 40),
+            textLabel.topAnchor.constraint(equalTo: vectorImagesCollectionView.bottomAnchor, constant: 40),
             textLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             textLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -30),
         ])
@@ -131,7 +131,18 @@ class StoryVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        vectorImagesCollection.reloadData()
+        
+        //reload collection view data because of settings could be changed
+        vectorImagesCollectionView.reloadData()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        //redraw visible cells if vectorImagesCollectionView is visible
+        if contentOrigin <= collectionOrigin + collectionHeight
+            && contentOrigin + view.bounds.height >= collectionOrigin {
+            drawCells()
+        }
     }
     
     @objc func closeButtonHandler() {
@@ -159,12 +170,6 @@ extension StoryVC: UICollectionViewDelegate {
             vectorCell.drawCell()
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let vectorCell = cell as? VectorImageCell {
-            vectorCell.clearCell()
-        }
-    }
 }
 
 extension StoryVC: UICollectionViewDelegateFlowLayout {
@@ -178,32 +183,44 @@ extension StoryVC: UICollectionViewDelegateFlowLayout {
 extension StoryVC: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        //visible are above the collection view - need to clear cells
-        if scrollView.contentOffset.y + view.bounds.height < vectorImagesCollection.frame.origin.y && !needRedrawCollectionView {
-            needRedrawCollectionView = true
-            vectorImagesCollection.visibleCells.forEach { cell in
-                if let vectorCell = cell as? VectorImageCell { vectorCell.clearCell() }
-            }
+        checkIfNeedToRedraw()
+    }
+}
+
+//MARK: VectorImagesCollectionView Drawings
+
+extension StoryVC {
+    
+    private var contentOrigin: CGFloat { scrollView.contentOffset.y }
+    private var collectionOrigin: CGFloat { vectorImagesCollectionView.frame.origin.y }
+    private var collectionHeight: CGFloat { vectorImagesCollectionView.bounds.height }
+    
+    private func checkIfNeedToRedraw() {
+        //visible area above the collection view - need to clear cells
+        if contentOrigin + view.bounds.height < collectionOrigin
+            && !needToRedrawCollectionView {
+            needToRedrawCollectionView = true
         }
         
-        //visible are above the collection view - need to clear cells
-        if  scrollView.contentOffset.y > vectorImagesCollection.frame.origin.y + vectorImagesCollection.bounds.height
-                && !needRedrawCollectionView {
-            needRedrawCollectionView = true
-            vectorImagesCollection.visibleCells.forEach { cell in
-                if let vectorCell = cell as? VectorImageCell { vectorCell.clearCell() }
-            }
+        //visible area above the collection view - need to clear cells
+        if  contentOrigin > collectionOrigin + collectionHeight
+                && !needToRedrawCollectionView {
+            needToRedrawCollectionView = true
         }
 
         //collection view is visible - need to redraw cells
-        if scrollView.contentOffset.y <= vectorImagesCollection.frame.origin.y + vectorImagesCollection.bounds.height
-            && scrollView.contentOffset.y + view.bounds.height >= vectorImagesCollection.frame.origin.y
-            && needRedrawCollectionView {
-            needRedrawCollectionView = false
-            vectorImagesCollection.visibleCells.forEach { cell in
-                if let vectorCell = cell as? VectorImageCell { vectorCell.drawCell() }
-            }
+        if contentOrigin <= collectionOrigin + collectionHeight
+            && contentOrigin + view.bounds.height >= collectionOrigin
+            && needToRedrawCollectionView {
+            needToRedrawCollectionView = false
+            drawCells()
+        }
+    }
+    
+    private func drawCells() {
+        vectorImagesCollectionView.visibleCells.forEach { cell in
+            if let vectorCell = cell as? VectorImageCell { vectorCell.drawCell() }
         }
     }
 }
+
