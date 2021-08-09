@@ -66,7 +66,7 @@ extension ItemsViewController: UICollectionViewDataSource {
             cell.titleLabel.text = story.title
             cell.contentTypeLabel.text = "Story"
         case .gallery(let gallery):
-            cell.contentTypeLabel.text = "Galery"
+            cell.contentTypeLabel.text = "Gallery"
             cell.imageView.image = gallery.coverImage
             cell.titleLabel.text = gallery.title
         }

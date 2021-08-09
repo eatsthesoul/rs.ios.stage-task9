@@ -52,7 +52,7 @@ struct FillingData {
     ]
 }
 
-struct Story {
+struct Story: ItemContent {
     let coverImage: UIImage
     let title: String
     let text: String
@@ -60,9 +60,15 @@ struct Story {
     let paths: [CGPath]
 }
 
-struct Gallery {
+struct Gallery: ItemContent {
     let coverImage: UIImage
     let title: String
     let images: [UIImage]
     let type: String = String(describing: Gallery.self)
+}
+
+protocol ItemContent {
+    var coverImage: UIImage { get }
+    var title: String { get }
+    var type: String { get }
 }

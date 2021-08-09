@@ -15,6 +15,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 4
         imageView.clipsToBounds = true
         return imageView
     }()

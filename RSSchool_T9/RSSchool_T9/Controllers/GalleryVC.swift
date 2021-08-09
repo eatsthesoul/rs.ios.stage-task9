@@ -9,22 +9,22 @@
 
 import UIKit
 
-class GalleryVC: UIViewController {
+class GalleryVC: ItemContentVC {
     
-    var data: Gallery?
+    var data: Gallery
+    
+//MARK: - UI properties
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 20
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 30, right: 20)
-        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isUserInteractionEnabled = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        collectionView.register(GalleryHeaderView.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: "GalleryHeader")
         collectionView.register(GalleryCollectionViewCell.self, forCellWithReuseIdentifier: "GalleryCell")
         
         collectionView.dataSource = self
@@ -33,33 +33,51 @@ class GalleryVC: UIViewController {
         return collectionView
     }()
     
+    private lazy var collectionViewHeightConstraint = {
+        NSLayoutConstraint(item: collectionView,
+                           attribute: .height,
+                           relatedBy: .equal,
+                           toItem: nil,
+                           attribute: .notAnAttribute,
+                           multiplier: 1,
+                           constant: 0)
+    }()
+    
+//MARK: - Initializers
+
     init(with data: Gallery) {
-        super.init(nibName: nil, bundle: nil)
         self.data = data
-        
-        view.backgroundColor = .black
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+//MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        view.addSubview(collectionView)
+        setupData(with: data)
+        
+        contentView.addSubview(collectionView)
         setupLayout()
     }
     
-    private func setupLayout() {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
+        let verticalImageHeight = (view.safeAreaLayoutGuide.layoutFrame.width - 40) * 1.337
+        
+        //collectionView height for vertical orientation
+        if view.bounds.height > view.bounds.width {
+            collectionViewHeightConstraint.constant = (verticalImageHeight + 20) * CGFloat(data.images.count)
+        //for horizontal
+        } else {
+            let linesForImages = (CGFloat(data.images.count) / 3).rounded(.up)
+            collectionViewHeightConstraint.constant = verticalImageHeight / 3 * linesForImages + 20
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -67,78 +85,65 @@ class GalleryVC: UIViewController {
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
-    @objc func closeButtonHandler() {
-        self.dismiss(animated: true, completion: nil)
+//MARK: - Setup methods
+    
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 40),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            collectionViewHeightConstraint
+        ])
     }
-
 }
+
+//MARK: - Collection View Data Source
 
 extension GalleryVC: UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        data?.images.count ?? 0
+        return data.images.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryCell", for: indexPath) as! GalleryCollectionViewCell
-        cell.imageView.image = data?.images[indexPath.row]
-        
+        cell.imageView.image = data.images[indexPath.row]
+
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        var reusableView : UICollectionReusableView? = nil
-        
-        if (kind == UICollectionView.elementKindSectionHeader) {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "GalleryHeader", for: indexPath) as! GalleryHeaderView
-            
-            headerView.setupData(data)
-            headerView.closeButton.addTarget(self, action: #selector(closeButtonHandler), for: .touchUpInside)
-            
-            reusableView = headerView
-        }
-        
-        return reusableView!
     }
 }
 
+//MARK: - Collection View Layout
+
 extension GalleryVC: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if UIDevice.current.orientation.isLandscape {
-            let width = collectionView.bounds.width / 3 - 40
+
+        if view.bounds.height > view.bounds.width {
+            let width = view.safeAreaLayoutGuide.layoutFrame.width - 40
             let height = width * 1.337
             return CGSize(width: width, height: height)
         } else {
-            let width = collectionView.bounds.width - 40
+            let width = view.safeAreaLayoutGuide.layoutFrame.width / 3 - 27
             let height = width * 1.337
             return CGSize(width: width, height: height)
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        let indexPath = IndexPath(row: 0, section: section)
-        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
-
-        return headerView.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width, height: UIView.layoutFittingExpandedSize.height),
-                                                  withHorizontalFittingPriority: .required,
-                                                  verticalFittingPriority: .fittingSizeLevel)
-    }
 }
 
+//MARK: - Collection View Delegate
+
 extension GalleryVC: UICollectionViewDelegate {
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+
         let imageDetailVC = ImageDetailVC()
-        
-        let image = data!.images[indexPath.row]
+
+        let image = data.images[indexPath.row]
         imageDetailVC.setupImage(image)
-        
+
         imageDetailVC.modalPresentationStyle = .fullScreen
         self.present(imageDetailVC, animated: true, completion: nil)
     }
